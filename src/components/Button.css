@@ -28,11 +28,11 @@
     grid-column: span 3;
 }
 
-.button.operator{
+.button.operation{
     background-color: #fa8231;
     color: #fff
 }
 
-.button.operator:active{
+.button.operation:active{
     background-color: #fa8131cc;
 }

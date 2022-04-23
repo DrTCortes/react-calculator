@@ -5,7 +5,7 @@ export default function Button(props) {
     return(
         <button className={`
             button
-            ${props.operator && 'operator'}
+            ${props.operation && 'operation'}
             ${props.double && 'double'}
             ${props.triple && 'triple'}
             `}
