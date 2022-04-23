@@ -21,47 +21,46 @@ export default class Calculator extends Component{
     }
 
     setOperation(operation) {
-        const clearDisplay = true
-        const values = [...this.state.values]
-
         
-
+        
+        if(this.state.current == 0){
+            this.setState({operation, current: 1, clearDisplay: true})
+        }
+        
+        
         if(this.state.current == 1){
-            
-            if(operation === '+'){
+            const equals = operation === '='
+            const currentOperation = this.state.operation
+            const values = [...this.state.values]
+
+            if(currentOperation === '+'){
                 values[0] = this.state.values[0] + this.state.values[1]
                 values[1] = 0
-                const displayValue = values[0]
 
-                this.setState({displayValue, values})
-            }else if(operation === '-'){
+            }else if(currentOperation === '-'){
                 values[0] = this.state.values[0] - this.state.values[1]
                 values[1] = 0
-                const displayValue = values[0]
 
-                this.setState({displayValue, values})
-            }else if(operation === '/'){
+            }else if(currentOperation === '/'){
                 values[0] = this.state.values[0] / this.state.values[1]
                 values[1] = 0
-                const displayValue = values[0]
 
-                this.setState({displayValue, values})
-            }else if(operation === '*'){
+            }else if(currentOperation === '*'){
                 values[0] = this.state.values[0] * this.state.values[1]
                 values[1] = 0
-                const displayValue = values[0]
 
-                this.setState({displayValue, values})
+            }if(operation === '='){
+                values[1] = 0
             }
-        }
 
-        if(this.state.current == 0){
-            this.setState({current: 1})
+            this.setState({
+                displayValue: values[0], 
+                operation: equals ? null : operation,
+                current: equals ? 0 : 1, 
+                clearDisplay: true,
+                values, 
+            })
         }
-        
-        this.setState({clearDisplay})
-
-        console.log(this.state)
     }
 
     addDigit(digit) {
@@ -70,9 +69,7 @@ export default class Calculator extends Component{
         }
 
         const clearDisplay = this.state.displayValue === '0' || this.state.clearDisplay
-
         const currentValue = clearDisplay ? '' : this.state.displayValue
-        
         const displayValue = currentValue + digit
 
         this.setState({displayValue, clearDisplay: false})
