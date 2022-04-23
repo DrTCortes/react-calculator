@@ -5,27 +5,40 @@ import Button from '../components/Button'
 import Display from '../components/Display'
 
 export default class Calculator extends Component{
+
+    clearMemory() {
+        console.log("Clear")
+    }
+
+    setOperator(operator) {
+        console.log("operator: " + operator)
+    }
+
+    addDigit(digit) {
+        console.log(digit)
+    }
+
     render(){
         return(
             <div className="calculator">
                 <Display value={100}></Display>
-                <Button label="AC"></Button>
-                <Button label="/"></Button>
-                <Button label="7"></Button>
-                <Button label="8"></Button>
-                <Button label="9"></Button>
-                <Button label="*"></Button>
-                <Button label="4"></Button>
-                <Button label="5"></Button>
-                <Button label="6"></Button>
-                <Button label="-"></Button>
-                <Button label="1"></Button>
-                <Button label="2"></Button>
-                <Button label="3"></Button>
-                <Button label="+"></Button>
-                <Button label="0"></Button>
-                <Button label="."></Button>
-                <Button label="="></Button>
+                <Button label="AC" click={() => {this.clearMemory()}} triple={true}></Button>
+                <Button label="/" click={(n) => {this.setOperator(n)}} operator></Button>
+                <Button label="7" click={(n) => {this.addDigit(n)}}></Button>
+                <Button label="8" click={(n) => {this.addDigit(n)}}></Button>
+                <Button label="9" click={(n) => {this.addDigit(n)}}></Button>
+                <Button label="*" click={(n) => {this.setOperator(n)}} operator></Button>
+                <Button label="4" click={(n) => {this.addDigit(n)}}></Button>
+                <Button label="5" click={(n) => {this.addDigit(n)}}></Button>
+                <Button label="6" click={(n) => {this.addDigit(n)}}></Button>
+                <Button label="-" click={(n) => {this.setOperator(n)}} operator></Button>
+                <Button label="1" click={(n) => {this.addDigit(n)}}></Button>
+                <Button label="2" click={(n) => {this.addDigit(n)}}></Button>
+                <Button label="3" click={(n) => {this.addDigit(n)}}></Button>
+                <Button label="+" click={(n) => {this.setOperator(n)}} operator></Button>
+                <Button label="0" click={(n) => {this.addDigit(n)}} double></Button>
+                <Button label="." click={(n) => {this.addDigit(n)}}></Button>
+                <Button label="=" click={(n) => {this.setOperator(n)}} operator></Button>
             </div>
         )
     }
