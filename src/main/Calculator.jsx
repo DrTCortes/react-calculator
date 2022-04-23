@@ -46,6 +46,12 @@ export default class Calculator extends Component{
                 const displayValue = values[0]
 
                 this.setState({displayValue, values})
+            }else if(operation === '*'){
+                values[0] = this.state.values[0] * this.state.values[1]
+                values[1] = 0
+                const displayValue = values[0]
+
+                this.setState({displayValue, values})
             }
         }
 
